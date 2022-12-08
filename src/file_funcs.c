@@ -15,7 +15,6 @@ int	read_file(int fd, char **file_contents)
 			break;
 		if (!*file_contents)
 		{
-
 			*file_contents = malloc((read_chars) * sizeof(char));
 			if (!*file_contents)
 				return (-1);

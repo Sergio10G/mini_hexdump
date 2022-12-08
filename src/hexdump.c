@@ -6,12 +6,12 @@ int	main(int argc, char **argv)
 	int		fc_len;
 	char	*file_contents;
 
-	fd = -1;
-	file_contents = 0;
 	if (argc < 2)
 		error_msg("You need at least 1 parameter to run this program.\nUsage: ./hexdump [files-to-process]");
 	for (int i = 1; i < argc; i++)
 	{
+		fd = -1;
+		file_contents = 0;
 		printf("%s>> %s%s\n", C_YELLOW, argv[i], C_RESET);
 		fd = open(argv[i], O_RDWR);
 		if (fd < 0)
