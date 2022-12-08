@@ -54,8 +54,8 @@ void	write_contents(char *file_contents, unsigned int len)
 		}
 		if (i < 16)
 		{
-			int pos = (2 * i) + i / 4;
-			while (pos <= 40)
+			int pos = (2 * i) + i / 2;
+			while (pos <= 42)
 			{
 				printf(" ");
 				pos++;
