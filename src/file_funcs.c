@@ -36,9 +36,11 @@ void	write_contents(char *file_contents, unsigned int len)
 	char			base[16] = "0123456789abcdef";
 	int				jump_flag;
 	int				repeating;
+	int				skipped;
 
 	jump_flag = 0;
 	hex_count = 0;
+	skipped = 0;
 	while ((int)len - (int)hex_count > 0)
 	{
 		repeating = 1;
@@ -57,11 +59,14 @@ void	write_contents(char *file_contents, unsigned int len)
 		else if (jump_flag && repeating)
 		{
 			hex_count += 16;
+			skipped++;
 			continue;
 		}
 		else if (jump_flag && !repeating)
 		{
-			printf("*\n");
+			if (skipped > 0)
+				printf("*\n");
+			skipped = 0;
 			jump_flag = 0;
 		}
 		hex_str = itohex(hex_count);
